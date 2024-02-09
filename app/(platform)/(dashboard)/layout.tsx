@@ -10,6 +10,7 @@ const DashboardLayout = ({children}:
     return ( 
         <div >
             <NavBar />
+            {children}
         </div>
      );
 }
