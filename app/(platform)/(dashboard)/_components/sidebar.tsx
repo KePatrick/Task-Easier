@@ -10,11 +10,15 @@ import { Separator } from "@/components/ui/separator";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Accordion } from "@/components/ui/accordion";
 import { NavItem, Organization } from "./nav-item";
+import { useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 
 interface SidebarProps {
   storageKey?: string;
 };
+
+
 
 export const Sidebar = ({
   storageKey = "t-sidebar-state",
@@ -37,6 +41,7 @@ export const Sidebar = ({
       infinite: true,
     },
   });
+  
 
   // 這段程式碼用於創建一個陣列，其中包含在 expanded 物件中被設為 true 的鍵。
   const defaultAccordionValue: string[] = Object.keys(expanded)
@@ -50,8 +55,9 @@ export const Sidebar = ({
       // 回傳更新後的累加值，這樣 reduce 方法就能夠在下一輪中使用。
       return acc;
     }, []);
-
-
+    
+    
+  
   const onExpand = (id: string) => {
     setExpanded((curr) => ({
       ...curr,
@@ -76,8 +82,8 @@ export const Sidebar = ({
   }
 
   return (
-    <>
-      <div className="font-medium text-xs flex items-center mb-1  bg-slate-200 rounded-sm">
+    <div className="h-full shadow-inner ">
+      <div className="font-medium text-xs flex items-center mb-1  bg-slate-200 rounded-sm ">
         <span className="px-4">
           Workspaces
         </span>
@@ -110,6 +116,6 @@ export const Sidebar = ({
           />
         ))} 
       </Accordion>
-    </>
+    </div>
   );
 };

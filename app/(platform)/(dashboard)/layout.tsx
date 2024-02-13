@@ -8,7 +8,7 @@ const DashboardLayout = ({children}:
     }) => {
     const { userId, orgId } = auth();
     return ( 
-        <div >
+        <div className="h-full">
             <NavBar />
             {children}
         </div>
